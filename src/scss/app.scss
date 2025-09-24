@@ -1,10 +1,22 @@
-@forward 'base/normalize';
-@forward 'base/variables';
-@forward 'base/mixins';
-@forward 'base/globales';
-@forward 'base/utilidades';
+@import 'base/normalize';
+@import 'base/variables';
+@import 'base/mixins';
+@import 'base/globales';
+@import 'base/utilidades';
+@import 'base/botones';
+@import 'base/darkMode';
 
-/* Estilos Generales */
-@forward 'layout/header';
-@forward 'layout/footer';
-@forward 'layout/navegacion';
+/** UI **/
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/navegacion';
+@import 'layout/iconos';
+@import 'layout/anuncios';
+@import 'layout/contactar';
+@import 'layout/inferior';
+@import 'layout/testimoniales';
+@import 'layout/formularios';
+
+
+/** Paginas Internas **/
+@import 'internas/nosotros';
