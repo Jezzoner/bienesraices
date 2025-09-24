@@ -34,9 +34,11 @@
         //var_dump($_POST);
         //echo "</pre>";
 
-        echo "<pre>";
-        var_dump($_FILES);
-        echo "</pre>";
+        
+
+        //echo "<pre>";
+        //var_dump($_FILES);
+        //echo "</pre>";
 
         
 
@@ -73,9 +75,7 @@
         if(!$vendedorId) {
             $errores[] = "Elige un vendedor";
         }
-        if(!$imagen['name'] || $imagen['error']) {
-            $errores[] = "La imagen es obligatoria";
-        }
+
         // Validar por tamaño (1mb máximo)
         $medida = 1024 * 1024; // 1mb
         if($imagen['size'] > $medida ) {
@@ -97,16 +97,16 @@
             move_uploaded_file($imagen['tmp_name'], $carpetaImagenes . $nombreImagen);
 
             // Insertar en la base de datos
-            $query = "INSERT INTO propiedades (titulo, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, vendedorid) VALUES ('$titulo', '$precio', '$nombreImagen', '$descripcion', '$habitaciones', '$wc', '$estacionamiento', '$creado', '$vendedorId')";
+            $query = " UPDATE propiedades SET titulo = '{$titulo}', precio = {$precio}, descripcion = '{$descripcion}', habitaciones = {$habitaciones}, wc = {$wc}, estacionamiento = {$estacionamiento}, vendedorId = {$vendedorId} WHERE id = {$id} ";
 
-            //echo $query;
+            echo $query;
 
             $resultado = mysqli_query($db, $query);
 
                 if($resultado) {
                     //echo "Insertado Correctamente";
                     // Redireccionar al usuario
-                    header('Location: /admin?resultado=1');
+                    header('Location: /admin?resultado=2');
                 }
         }
     }
@@ -127,7 +127,7 @@
 
         <?php endforeach; ?>
 
-        <form class="formulario" method="POST" action="/admin/propiedades/crear.php" enctype="multipart/form-data">
+        <form class="formulario" method="POST" enctype="multipart/form-data">
             <fieldset>
                 <legend>Información General</legend>
 
