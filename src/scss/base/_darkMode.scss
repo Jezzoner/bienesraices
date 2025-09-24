@@ -9,6 +9,14 @@
         color: $gris;
     }
 
+    // 👉 Agregar estilos para las tablas
+    table {
+        td, th {
+            color: $blanco; // o el color que prefieras
+            font-weight: $bold;
+        }
+    }
+
     .anuncio, 
     .resumen-propiedad {
         background-color: $grisOscuro;
@@ -26,7 +34,7 @@
     .texto-nosotros blockquote {
         color: $blanco;
     }
-   
+
     .formulario {
         label,
         legend,
@@ -43,5 +51,5 @@
         }
     }
 
-  
+
 }
