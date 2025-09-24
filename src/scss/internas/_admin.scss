@@ -7,6 +7,9 @@
    margin: 1rem 0;
 
    &.error {
-    background-color: $rojo;
+   background-color: $rojo;
+   }
+   &.exito {
+   background-color: $verde;
    }
 }
