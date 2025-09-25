@@ -12,7 +12,33 @@
 
     $resultado = $_GET['resultado'] ?? null;
 
-    
+    if( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
+        // Validar ID
+        $id = $_POST['id'];
+        $id = filter_var( $id, FILTER_VALIDATE_INT );
+
+        if( $id ) {
+
+            //eliminar el archivo
+            $query = "SELECT imagen FROM propiedades WHERE id = {$id}";
+
+            $resultadoImagen = mysqli_query( $db, $query );
+            $propiedad = mysqli_fetch_assoc( $resultadoImagen );
+
+            unlink( '../imagenes/' . $propiedad['imagen'] );
+
+            // Eliminar la propiedad
+            $query = "DELETE FROM propiedades WHERE id = {$id}";
+            $resultadoEliminar = mysqli_query( $db, $query );
+
+            if( $resultadoEliminar ) {
+                // Redireccionar al usuario
+                header('Location: /admin?resultado=3');
+            }
+        }
+    }
+
+
     require '../incluides/funciones.php';
     incluirTemplate('header');
 ?>
