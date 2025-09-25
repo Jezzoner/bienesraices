@@ -1,5 +1,11 @@
 <?php 
 
+    require '../../incluides/funciones.php';
+    $auth = estaAutenticado();
+
+    if( !$auth ) {
+        header('Location: /');
+    }
     require '../../incluides/config/database.php';
 
     $db = conectarDB();
@@ -23,9 +29,9 @@
         //var_dump($_POST);
         //echo "</pre>";
 
-        echo "<pre>";
-        var_dump($_FILES);
-        echo "</pre>";
+        //echo "<pre>";
+        //var_dump($_FILES);
+        //echo "</pre>";
 
         
 
@@ -100,7 +106,6 @@
         }
     }
 
-    require '../../incluides/funciones.php';
     incluirTemplate('header');
 ?>
 

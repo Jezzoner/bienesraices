@@ -1,5 +1,12 @@
 <?php 
 
+    require '../../incluides/funciones.php';
+    $auth = estaAutenticado();
+
+    if( !$auth ) {
+        header('Location: /');
+    }
+
     $id = $_GET['id'];
     if( !filter_var( $id, FILTER_VALIDATE_INT ) ) {
         header('Location: /admin');
@@ -123,7 +130,7 @@
         }
     }
 
-    require '../../incluides/funciones.php';
+
     incluirTemplate('header');
 ?>
 

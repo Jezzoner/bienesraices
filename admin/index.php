@@ -1,5 +1,12 @@
 <?php 
 
+    require '../incluides/funciones.php';
+    $auth = estaAutenticado();
+
+    if( !$auth ) {
+        header('Location: /');
+    }
+
     // Importar la conexion
     require '../incluides/config/database.php';
     $db = conectarDB();
@@ -38,8 +45,6 @@
         }
     }
 
-
-    require '../incluides/funciones.php';
     incluirTemplate('header');
 ?>
 
@@ -56,6 +61,10 @@
 
         <?php if( intval( $resultado ) === 3 ): ?>
             <p class="alerta exito">Anuncio Eliminado Correctamente</p>
+        <?php endif; ?>
+
+        <?php if( intval( $resultado ) === 4 ): ?>
+            <p class="alerta exito">Sesión Iniciada Correctamente</p>
         <?php endif; ?>
 
         <a href="/admin/propiedades/crear.php" class="boton boton-verde">Nueva Propiedad</a>
